@@ -70,18 +70,23 @@ function updateTile(tile, num) {
 }
 
 document.addEventListener("keyup", (e) => {
+  let prev = JSON.parse(JSON.stringify(board));
   if (e.code === "ArrowLeft") {
     slideLeft();
     setTwo();
+    if (배열비교(prev, board)) document.querySelector("#gameOver").style.display = "flex";
   } else if (e.code === "ArrowRight") {
     slideRight();
     setTwo();
+    if (배열비교(prev, board)) document.querySelector("#gameOver").style.display = "flex";
   } else if (e.code === "ArrowUp") {
     slideUp();
     setTwo();
+    if (배열비교(prev, board)) document.querySelector("#gameOver").style.display = "flex";
   } else if (e.code === "ArrowDown") {
     slideDown();
     setTwo();
+    if (배열비교(prev, board)) document.querySelector("#gameOver").style.display = "flex";
   }
   document.querySelector("#score").innerText = score;
 });
@@ -166,3 +171,44 @@ function slideDown() {
     }
   }
 }
+
+function 배열비교(a, b) {
+  if (a === b) return true;
+  if (a == null || b == null) return false;
+  if (a.length !== b.length) return false;
+
+  for (let i = 0; i < a.length; ++i) {
+    if (Array.isArray(a[i]) && Array.isArray(b[i])) {
+      if (!배열비교(a[i], b[i])) return false;
+    } else if (a[i] !== b[i]) {
+      return false;
+    }
+  }
+  return true;
+}
+
+console.log(`
+      ROCKET SCIENCE
+
+            ##
+           #  #
+          #    #
+         #      #
+        #   ##   #
+       #  #    #  #
+       #  #    #   #
+     ##     ##     ##
+    # #            # #
+   #  #            #  #
+  #   #            #   #
+ #    #            #    #
+ #  # #            # #  #
+ # #   #          #   # #
+ #      # # # # ##      #
+
+         #      #
+          #    #
+           #  #
+            ##
+
+`);
