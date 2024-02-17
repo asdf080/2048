@@ -5,12 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>2048</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="img/favi.png" />
     <script src="script.js"></script>
   </head>
   <body>
-    <h1>2048</h1>
-    <hr />
-    <h2>Score: <span id="score">0</span></h2>
-    <div id="board"></div>
+    <header>
+      <h1>2048</h1>
+      <div>
+        <h2>SCORE</h2>
+        <span id="score">0</span>
+      </div>
+    </header>
+    <div id="board">
+      <div id="gameOver" style="display: none">
+        <h3>GAME OVER</h3>
+        <button onclick="location.reload()">다시 하기</button>
+      </div>
+    </div>
   </body>
 </html>
